@@ -1,0 +1,17 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Navbar from '../layouts/Navbar.astro';
+import '../styles/global.css'
+const crnrtPage = Astro.url.pathname
+---
+
+<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+		<BaseHead/>
+	</head>
+	<body>
+		<Navbar/>
+		<h1 class="text-9xl">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, nihil debitis, animi impedit culpa eius nam possimus nobis minima fugiat facilis fuga quidem illum sed eaque blanditiis neque saepe quod!</h1>
+	</body>
+</html>

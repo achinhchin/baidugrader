@@ -1,0 +1,75 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Navbar from "../layouts/Navbar.astro";
+import "../styles/global.css";
+const crnrtPage = Astro.url.pathname,
+	data = [
+		{ code: "001", name: "A+B Problem", solved: 4381, score: 100 },
+		{ code: "002", name: "Fuck Problem", solved: 4381, score: 100 },
+		{ code: "003", name: "Bruh Problem", solved: 4381, score: 100 },
+		{ code: "004", name: "Yakk Problem", solved: 4381, score: 100 },
+		{ code: "005", name: "Ahh Problem", solved: 4381, score: 100 },
+		{ code: "006", name: "Hah Problem", solved: 4381, score: 100 },
+		{ code: "007", name: "WTF Problem", solved: 4381, score: 100 },
+		{ code: "001", name: "A+b Problem", solved: 4381, score: 100 },
+		{ code: "001", name: "A+B Problem", solved: 4381, score: 100 },
+		{ code: "001", name: "A+B Problem", solved: 4381, score: 100 },
+		{ code: "001", name: "A+B Problem", solved: 4381, score: 100 },
+		{ code: "001", name: "A+B Problem", solved: 4381, score: 100 },
+		{ code: "001", name: "A+B Problem", solved: 4381, score: 100 },
+		{ code: "001", name: "A+B Problem", solved: 4381, score: 100 },
+		{ code: "001", name: "A+B Problem", solved: 4381, score: 100 },
+		{ code: "001", name: "A+B Problem", solved: 4381, score: 100 },
+		{ code: "001", name: "A+B Problem", solved: 4381, score: 100 },
+		{ code: "001", name: "A+B Problem", solved: 4381, score: 100 },
+	];
+---
+
+<!doctype html>
+<html>
+	<head>
+		<BaseHead />
+	</head>
+	<body>
+		<Navbar />
+		<section class="text-center">
+			<h1 class="text-4xl mt-2 font-bold">Tasks</h1>
+			<p class="text-lg mt-1">
+				Can't browse under 10<sup>100000</sup> tasks
+			</p>
+			<input
+				type="text"
+				placeholder="Can't search just a textbox."
+				class="bg-[#4C566A] rounded-md border-2 mt-3 text-md p-1"
+			/>
+		</section>
+		<section
+			class="max-w-[700px] m-8 ml-auto mr-auto flex flex-col justify-center"
+		>
+			{
+				data.map((itms) => (
+					<div
+						onclick={`window.location.href='/task/${itms.code}'`}
+						class="flex w-full items-center justify-between bg-[#2E3440] drop-shadow-xl p-3 rounded-xl my-2 mx-auto duration-[5s] hover:rotate-[720deg] hover:scale-[2] hover:z-50 cursor-pointer delay-200"
+					>
+						<div>
+							<b> {itms.name} </b>
+							<p class="text-[#D8DEE9]/80"> {itms.code} </p>
+						</div>
+						<div class="bg-[#5E81AC] px-1 rounded-md">
+							Baidu Team
+						</div>
+						<div> {itms.solved} </div>
+						<div> {itms.score} Points </div>
+					</div>
+				))
+			}
+			<div class="mt-5 sticky bottom-0 flex w-full justify-between bg-[#D8DEE9]/70 backdrop-blur-md text-[#3B4252] p-3 rounded-ss-lg rounded-se-lg border-[#4C566A] border-1">
+				<div> Problem Title </div>
+				<div> Writer </div>
+				<div> Solved </div>
+				<div> Score </div>
+			</div>
+		</section>
+	</body>
+</html>

@@ -1,0 +1,55 @@
+---
+import BaseHead from "../../components/BaseHead.astro";
+import Navbar from "../../layouts/Navbar.astro";
+import "../../styles/global.css";
+export function getStaticPaths() {
+    return [
+        { params: { task: "001" } },
+        { params: { task: "002" } },
+        { params: { task: "003" } },
+        { params: { task: "004" } },
+        { params: { task: "005" } },
+        { params: { task: "006" } },
+        { params: { task: "007" } },
+    ];
+}
+const { task } = Astro.params;
+const data = { name: "Fuck Problem", code: "001" };
+---
+
+<!doctype html>
+<html>
+    <head>
+        <BaseHead />
+    </head>
+    <body>
+        <Navbar />
+        <section style="min-height: calc(100vh - 120px);" class="flex flex-col h-full max-w-[800px] mx-8 min-[800px]:mx-auto lg:mx-10 lg:flex-row my-5 lg:max-w-[1024px] min-[1104px]:mx-auto">
+            <div class="lg:min-w-56 mr-5">
+                <b class="text-3xl"> {data.name} </b>
+                <p> {data.code} </p>
+                <hr class="my-3">
+                <div class="flex mdslt text-center justify-around my-3 items-center lg:flex-col">
+                    <a href="" class="bg-[#E5E9F0] px-1 rounded-md text-[#3B4252] "> Statemenmt </a>
+                    <a href={`/submit/${task}`}> Submit </a>
+                    <a href=""> Submissions </a>
+                    <a href="#"> No Solution for you </a>
+                </div>
+            </div>
+            <iframe
+                class="w-full" style="min-height: calc(100vh - 245px);"
+                src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/20210101201653/PDF.pdf"
+            >
+            </iframe>
+        </section>
+    </body>
+</html>
+
+<style>
+    .mdslt > a{
+        @apply text-lg lg:w-full lg:mb-1 duration-200
+    }
+    .mdslt > a:hover {
+        @apply bg-[#E5E9F0] px-1 rounded-md text-[#3B4252]
+    }
+</style>

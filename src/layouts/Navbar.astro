@@ -1,0 +1,29 @@
+---
+import { Image } from 'astro:assets'
+import LargeLogo from '../assets/logo/large.png'
+const pageLinks = [{'link': '/', 'name': 'Home'}, {'link': '/tasks', 'name': 'Tasks'}, {'link': '/learn', 'name': 'Learn'}, {'link': '/about', 'name': 'About'}],
+	crntPage = Astro.url.pathname
+var i = 0;
+---
+<header class="z-10 sticky top-0 justify-between w-full flex py-2 px-4 h-20 bg-[#2E3440]/80 backdrop-blur-lg border-b-[#ECEFF4]/30 border-b-[1px]">
+	<a href="/" class="h-full"><Image src={LargeLogo} alt="Baidu Logo" class="w-auto h-full"/> </a>
+	<nav class="flex items-center"> 
+		<div>
+			{
+				pageLinks.map(itms => <a href={itms.link} class={itms.link == crntPage && "thisPage"}>{itms.name}</a>)
+			}
+		</div>
+		<button class="text-[#2E3440] bg-[#EBCB8B] p-1 rounded-lg ml-2"> Login / Sign up </button>
+	</nav>
+</header>
+
+<style define:vars={{crntPage}}>
+	nav > div > a {
+		margin-inline: 5px;
+		font-size: 17px;
+	}
+
+	.thisPage {
+		text-decoration: underline;
+	}
+</style>

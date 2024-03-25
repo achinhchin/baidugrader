@@ -1,0 +1,81 @@
+---
+import BaseHead from "../../components/BaseHead.astro";
+import Navbar from "../../layouts/Navbar.astro";
+import "../../styles/global.css";
+export function getStaticPaths() {
+    return [
+        { params: { task: "001" } },
+        { params: { task: "002" } },
+        { params: { task: "003" } },
+        { params: { task: "004" } },
+        { params: { task: "005" } },
+        { params: { task: "006" } },
+        { params: { task: "007" } },
+    ];
+}
+const { task } = Astro.params;
+const data = { name: "Fuck Problem", code: "001" };
+---
+
+<!doctype html>
+<html>
+    <head>
+        <BaseHead />
+    </head>
+    <body>
+        <Navbar />
+        <section
+            style="min-height: calc(100vh - 120px);"
+            class="flex flex-col h-full max-w-[800px] mx-8 min-[800px]:mx-auto lg:mx-10 lg:flex-row my-5 lg:max-w-[1024px] min-[1104px]:mx-auto"
+        >
+            <div class="lg:min-w-56 mr-5">
+                <b class="text-3xl"> {data.name} </b>
+                <p>{data.code}</p>
+                <hr class="my-3" />
+                <div
+                    class="flex mdslt text-center justify-around my-3 items-center lg:flex-col"
+                >
+                    <a href={`/task/${task}`}> Statemenmt </a>
+                    <a
+                        href="#"
+                        class="bg-[#E5E9F0] px-1 rounded-md text-[#3B4252]"
+                    >
+                        Submit
+                    </a>
+                    <a href=""> Submissions </a>
+                    <a href="#"> No Solution for you </a>
+                </div>
+            </div>
+            <div class="w-full h-full flex flex-col">
+                <form action="http://192.168.164.165:8000" class="flex items-stretch" method="POST" enctype="multipart/form-data">
+                    <input
+                        required
+                        type="file"
+                        id="file"
+                        name="file"
+                        class="drop-shadow-lg w-[.1px] h-[.1px] opacity-0 overflow-hidden absolute z-[-1]"
+                    />
+                    <label
+                        for="file"
+                        class="drop-shadow-lg bg-[#ECEFF4] flex-grow-[1] text-[#3B4252] p-1 rounded-md hover:text-[#D8DEE9] hover:bg-[#3B4252] block w-fit hover:scale-[5] hover:rotate-[720deg] duration-[5s] delay-200 cursor-pointer"
+                    >
+                        You cannot do not upload file if you click this shit.
+                    </label>
+                    <input type="submit" class="cursor-wait ml-3 bg-[#2E3440] px-3 rounded-md flex-grow-[1] w-fit" value="you cannot dont upload if you click this button"/>
+                </form>
+                <textarea
+                    style="height: calc(100vh - 274px);"
+                    class="w-full bg-[#D8DEE9] rounded-lg flex text-md text-[#3B4252] my-3"
+                    placeholder="This is just a text box."></textarea>
+            </div>
+        </section>
+        <style>
+            .mdslt > a {
+                @apply text-lg lg:w-full lg:mb-1 duration-200;
+            }
+            .mdslt > a:hover {
+                @apply bg-[#E5E9F0] px-1 rounded-md text-[#3B4252];
+            }
+        </style>
+    </body>
+</html>

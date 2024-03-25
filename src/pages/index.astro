@@ -1,0 +1,29 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Navbar from '../layouts/Navbar.astro';
+import '../styles/global.css'
+import workingIcon from '../assets/icons/code.webp'
+import { Image } from 'astro:assets';
+---
+
+<!DOCTYPE html>
+<html lang="en-us" class="f">
+	<head>
+		<BaseHead/>
+	</head>
+	<body>
+		<Navbar/>
+		<section class="font-[Kanit]">
+			<div class="text-center">
+				<h1 class="mt-5 text-4xl leading-6"> <p class="text-[#81A1C1] font-bold">ฝึกฝนทักษะการเขียนโปรแกรม</p><br>  ด้วยโจทย์อัน <i class="font-[200]">น้อยนิด</i> </h1>
+				<p class="mt-5 text-lg">
+					เว็บไซต์ที่ผู้ใช้มากมายหวาดกลัวหวาดระแวง <br> ด้วยโจทย์ฝึกเขียนโปรแกรมแค่ 10 ข้อ
+				</p>
+			</div>
+			<div class="flex justify-center mt-5 flex-col items-center">
+				<button onclick="window.location.href='/tasks'" class="duration-[5s] delay-100 bg-[#88C0D0] p-3 rounded-lg hover:shadow-lg text-[#3B4252] m-auto hover:rotate-[720deg] hover:scale-[5] shadow-blu"> ไม่มีระบบค้นหาโจทย์ </button>
+				<Image class=" mt-5 w-[350px]" src={workingIcon} alt="43" />
+			</div>
+		</section>
+	</body>
+</html>
